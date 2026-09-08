@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#F6F7F5">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0E1A21">
+<title>King Albert Lomibao — process automation, applied AI, workforce systems</title>
+<meta name="description" content="Eight operational systems: process automation, applied AI and workforce analytics, built inside a maritime crewing operation in Qatar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light dark;
+  --ink:#0B1A22; --ink-2:#122833; --line-d:#27404C;
+  --bar-bg:rgba(246,247,245,.88); --hover:#EDEFEB;
+  --node:#FFFFFF; --warn-bg:#FBF3E9; --warn-line:#DCB98F; --grid:#EBEEEA;
+  --on-ink:#EAF0F0; --on-ink-soft:#B4C6CD; --on-ink-dim:#9DBAC5;
+  --on-ink-link:#8FCFCF; --on-ink-rule:#33525F;
+  --paper:#F6F7F5; --card:#FFFFFF; --rule:#E1E5E1;
+  --text:#132029; --muted:#4B5A63;
+  --sea:#1B7A82; --sea-d:#0F5B62; --sand:#B9803F;
+  --measure:68ch;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--text);
+  font-family:"Instrument Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:17px;line-height:1.66;-webkit-font-smoothing:antialiased;
+  font-feature-settings:"liga" 1}
+.wrap{width:min(1200px,90vw);margin:0 auto}
+.serif,h1,h2,h3,.chnum,.stat b{font-family:Newsreader,Georgia,"Times New Roman",serif;font-weight:400}
+h1,h2,h3{letter-spacing:-.012em}
+p{max-width:var(--measure)}
+a{color:var(--sea-d)}
+a:focus-visible{outline:2px solid var(--sand);outline-offset:4px}
+.eyebrow{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500}
+
+/* sticky bar */
+.bar{position:sticky;top:0;z-index:20;background:var(--bar-bg);
+  backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--rule)}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;
+  padding:.7rem 0;gap:1rem}
+.bar b{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:1rem;white-space:nowrap}
+.bar nav{display:flex;gap:1.4rem;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+.bar nav a{color:var(--muted);text-decoration:none}
+.bar nav a:hover{color:var(--text)}
+@media(max-width:720px){.bar nav{display:none}}
+
+/* hero */
+.hero{background:var(--ink);color:var(--on-ink);padding:clamp(3.5rem,9vw,7rem) 0 0;margin-top:-1px}
+.hero .eyebrow{color:var(--on-ink-dim);margin:0 0 2.6rem}
+.hero h1{font-size:clamp(2.3rem,6vw,4.4rem);line-height:1.08;color:#fff;margin:0 0 1.6rem;
+  max-width:18ch;font-weight:400}
+.hero h1 em{font-style:italic;color:#9FD6D6}
+.hero .lede{max-width:56ch;color:var(--on-ink-soft);font-size:1.05rem;margin:0 0 3rem}
+.hero .lede b{color:#fff;font-weight:600}
+.stats{display:flex;flex-wrap:wrap;gap:3rem;padding:1.8rem 0;border-top:1px solid var(--line-d)}
+.stat b{display:block;font-size:2.3rem;color:#fff;line-height:1}
+.stat span{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--on-ink-dim);margin-top:.5rem}
+.idcard{display:flex;flex-wrap:wrap;gap:.4rem 2rem;align-items:baseline;
+  border-top:1px solid var(--line-d);padding:1.5rem 0 3rem;font-size:.94rem;color:var(--on-ink-soft)}
+.idcard strong{color:#fff;font-weight:600}
+.idcard a{color:var(--on-ink-link);text-underline-offset:3px}
+
+/* section shell */
+.sec{padding:clamp(3.5rem,7vw,6rem) 0}
+.sec-head{display:grid;grid-template-columns:190px 1fr;gap:3rem;margin-bottom:2.4rem}
+.sec-head .eyebrow{color:var(--sea-d);margin:.5rem 0 0}
+.sec-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);margin:0 0 .6rem}
+@media(max-width:900px){.sec-head{grid-template-columns:1fr;gap:.6rem}}
+
+/* index */
+.idx{border-top:1px solid var(--rule)}
+.idx a{display:grid;grid-template-columns:3.5rem 1fr auto;gap:1.5rem;align-items:baseline;
+  padding:1rem .2rem;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--text)}
+.idx a:hover{background:var(--hover)}
+.idx .n{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.idx .nm{font-family:Newsreader,Georgia,serif;font-size:1.25rem}
+.idx .nm small{font-family:"Instrument Sans",sans-serif;font-size:.8rem;color:var(--muted);
+  display:block;letter-spacing:.02em}
+.idx .st{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sea-d)}
+.idx .st.q{color:var(--muted)}
+.idx h3{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  margin:2rem 0 .2rem;font-family:"Instrument Sans",sans-serif;font-weight:600}
+.idx h3:first-of-type{margin-top:0}
+
+/* method */
+.method{list-style:none;margin:0;padding:0;counter-reset:m;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2.4rem 2.6rem}
+.method li{counter-increment:m}
+.method li::before{content:counter(m,decimal-leading-zero);display:block;font-size:.75rem;
+  letter-spacing:.14em;color:var(--sea);margin-bottom:.8rem;
+  padding-bottom:.7rem;border-bottom:1px solid var(--rule)}
+.method h3{margin:0 0 .35rem;font-size:1.15rem}
+.method p{margin:0;color:var(--muted);font-size:.94rem;max-width:32ch}
+
+/* chapter */
+.chapter{padding:clamp(3rem,6vw,5rem) 0 0;border-top:1px solid var(--text)}
+.chapter .inner{display:grid;grid-template-columns:190px 1fr;gap:3rem}
+.chnum{font-size:3.2rem;line-height:.9;color:var(--sea);font-style:italic}
+.chapter h2{font-size:clamp(1.9rem,4vw,3rem);margin:0 0 .8rem}
+.chapter p{color:var(--muted);max-width:54ch;margin:0}
+@media(max-width:900px){.chapter .inner{grid-template-columns:1fr;gap:.8rem}
+  .chnum{font-size:2.2rem}}
+
+/* project */
+.project{display:grid;grid-template-columns:190px 1fr;gap:3rem;
+  padding:clamp(2.8rem,5vw,4.2rem) 0;border-bottom:1px solid var(--rule);scroll-margin-top:4rem}
+.rail{align-self:start}
+.project > div{min-width:0}
+@media(min-width:901px){.rail{position:sticky;top:5rem}}
+.rail .n{font-size:.78rem;letter-spacing:.14em;color:var(--muted);display:block;
+  padding-bottom:.7rem;border-bottom:1px solid var(--text)}
+.rail .st{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--sea-d);margin-top:.8rem}
+.rail .st.q{color:var(--muted)}
+.rail ul{list-style:none;margin:1.4rem 0 0;padding:0}
+.rail li{font-size:.8rem;color:var(--muted);padding:.3rem 0;line-height:1.4}
+@media(max-width:900px){.project{grid-template-columns:1fr;gap:1.2rem}
+  .rail{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;align-items:baseline}
+  .rail ul{display:none}.rail .n{border:0;padding:0}.rail .st{margin:0}}
+.project h2{font-size:clamp(1.7rem,3.6vw,2.6rem);margin:0 0 .3rem}
+.project h2 em{font-style:italic;color:var(--muted);font-size:.55em}
+.lead{font-size:1.06rem;margin-top:1rem}
+h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sea-d);
+  font-family:"Instrument Sans",sans-serif;font-weight:600;
+  margin:2.4rem 0 .8rem;padding-bottom:.5rem;border-bottom:1px solid var(--rule)}
+ol.steps{margin:0;padding-left:1.3rem;max-width:var(--measure)}
+ol.steps li{margin-bottom:.5rem}
+ul.res,ul.plain{list-style:none;margin:0;padding:0;max-width:var(--measure)}
+ul.res li,ul.plain li{position:relative;padding-left:1.2rem;margin-bottom:.65rem}
+ul.res li::before,ul.plain li::before{content:"";position:absolute;left:0;top:.72em;
+  width:.35rem;height:.35rem;border-radius:50%;background:var(--sea)}
+ul.res b{font-weight:600}
+.note{border-left:2px solid var(--sand);padding:.2rem 0 .2rem 1.2rem;margin-top:1.6rem;
+  max-width:var(--measure)}
+.note p{margin:0;font-style:italic;color:#3C4A52}
+
+/* build log */
+.log{list-style:none;margin:0;padding:0;max-width:var(--measure)}
+.log li{padding:0 0 1.4rem 1.6rem;border-left:1px solid var(--rule);position:relative}
+.log li:last-child{border-left-color:transparent;padding-bottom:0}
+.log li::before{content:"";position:absolute;left:-4.5px;top:.6em;width:8px;height:8px;
+  border-radius:50%;background:var(--sea)}
+.log h5{margin:0 0 .3rem;font-family:Newsreader,Georgia,serif;font-weight:500;
+  font-size:1.12rem;letter-spacing:-.01em}
+.log p{margin:0;color:var(--muted);font-size:.96rem}
+.tests{margin:0;max-width:var(--measure)}
+.tests div{display:grid;grid-template-columns:minmax(180px,.9fr) 1.4fr;gap:1.4rem;
+  padding:.75rem 0;border-bottom:1px solid var(--rule)}
+.tests dt{font-weight:600;font-size:.95rem}
+.tests dd{margin:0;color:var(--muted);font-size:.95rem}
+@media(max-width:640px){.tests div{grid-template-columns:1fr;gap:.2rem}}
+
+/* diagrams */
+.dia-card{background:var(--card);border:1px solid var(--rule);
+  padding:1.8rem 1.8rem 1.2rem;margin:2.2rem 0}
+.dia-card + .dia-card{margin-top:1rem}
+svg.dia{width:100%;height:auto;display:block}
+svg.dia text{font-family:"Instrument Sans",Arial,sans-serif;text-anchor:middle}
+svg.dia .t{font-size:14px;font-weight:600;fill:var(--text)}
+svg.dia .s{font-size:12px;fill:var(--muted)}
+svg.dia .t-w{font-size:14px;font-weight:600;fill:#fff}
+svg.dia .s-w{font-size:12px;fill:#A9C6D6}
+svg.dia .nd{fill:var(--node);stroke:var(--rule);stroke-width:1.2}
+svg.dia .nd-dark{fill:var(--ink);stroke:var(--ink)}
+svg.dia .nd-accent{fill:var(--sea);stroke:var(--sea)}
+svg.dia .nd-warn{fill:var(--warn-bg);stroke:var(--warn-line)}
+svg.dia .nd-ghost{fill:none;stroke:var(--rule);stroke-dasharray:6 5}
+svg.dia .ar{stroke:var(--sea);stroke-width:1.4;fill:none}
+svg.dia .arh{fill:var(--sea)}
+svg.dia .rule{stroke:var(--rule);stroke-width:1}
+svg.dia .grid{stroke:var(--grid);stroke-width:1}
+svg.dia .avg{stroke:var(--text);stroke-width:1.4;stroke-dasharray:6 4}
+svg.dia .divide{stroke:var(--rule);stroke-width:1.4}
+figure{margin:0}
+figcaption{font-size:.85rem;color:var(--muted);margin-top:1.1rem;text-align:center;font-style:italic}
+.scroll{overflow-x:auto;min-width:0;max-width:100%}
+.swipe{display:none}
+
+/* ---------------- dark mode ---------------- */
+@media (prefers-color-scheme: dark){
+  :root{
+    --ink:#050D13; --paper:#0E1A21; --card:#152430; --rule:#263A44;
+    --text:#E8EEF0; --muted:#A6B9C1;
+    --sea:#4FB3B8; --sea-d:#7FCFD2; --sand:#D69A55;
+    --bar-bg:rgba(14,26,33,.9); --hover:#16242C;
+    --on-ink:#EDF3F4; --on-ink-soft:#C2D4DB; --on-ink-dim:#A8C2CC;
+    --on-ink-link:#8FCFCF; --on-ink-rule:#3A5A67; --line-d:#243B46;
+  }
+  .hero h1 em{color:#8FD6D6}
+  .note p{color:#C6D5DB}
+  .method li::before,h4,.rail .n{border-color:var(--rule)}
+  .build{background:var(--card)}
+  /* figures stay on paper, as printed plates */
+  .dia-card{
+    --text:#132029; --muted:#4B5A63; --rule:#E1E5E1; --ink:#0B1A22;
+    --sea:#1B7A82; --sea-d:#0F5B62; --node:#FFFFFF;
+    --warn-bg:#FBF3E9; --warn-line:#DCB98F; --grid:#EBEEEA;
+    background:#F6F7F5;border-color:#D3D9D5;color:var(--text)
+  }
+}
+
+/* ---------------- mobile ---------------- */
+@media(max-width:760px){
+  body{font-size:16.5px;line-height:1.7}
+  .wrap{width:92vw}
+  .sec{padding:2.6rem 0}
+  .eyebrow{font-size:.7rem;letter-spacing:.14em}
+
+  /* nav becomes a scrolling strip instead of disappearing */
+  .bar .wrap{padding:.6rem 0;gap:.8rem}
+  .bar b{font-size:.95rem}
+  .bar nav{display:flex;gap:1.1rem;font-size:.72rem;overflow-x:auto;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .bar nav::-webkit-scrollbar{display:none}
+  .bar nav a{color:var(--text);white-space:nowrap}
+  .idx a,.method li,.tests div{min-width:0}
+
+  .hero{padding:2.6rem 0 0}
+  .hero h1{font-size:2.05rem;line-height:1.12;max-width:none}
+  .hero .lede{font-size:1rem;margin-bottom:2rem}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 1rem;padding:1.4rem 0}
+  .stat b{font-size:1.8rem}
+  .stat span{font-size:.72rem;letter-spacing:.08em}
+  .idcard{gap:.55rem 0;flex-direction:column;padding-bottom:2.2rem;line-height:1.5}
+
+  /* index */
+  .idx a{grid-template-columns:2.4rem 1fr;gap:.8rem;padding:.9rem .1rem}
+  .idx .nm{font-size:1.15rem;line-height:1.3}
+  .idx .nm small{font-size:.85rem;margin-top:.15rem}
+  .idx .st{grid-column:2;font-size:.7rem;margin-top:.35rem}
+
+  /* method */
+  .method{gap:1.8rem}
+  .method h3{font-size:1.08rem}
+  .method p{font-size:.94rem;max-width:none;color:var(--muted)}
+
+  /* projects */
+  .project{padding:2.4rem 0}
+  .project h2{font-size:1.65rem;line-height:1.18}
+  .project h2 em{display:block;font-size:.62em;margin-top:.15rem}
+  .lead{font-size:1rem}
+  .rail{gap:.4rem .9rem}
+  .rail .n{font-size:.8rem;letter-spacing:.1em}
+  .rail .st{font-size:.72rem}
+  h4{font-size:.74rem;letter-spacing:.13em;margin:2rem 0 .7rem}
+  ol.steps,ul.res,ul.plain,.tests{max-width:none}
+  ol.steps li,ul.res li,ul.plain li{margin-bottom:.7rem}
+  .log li{padding-left:1.3rem}
+  .log h5{font-size:1.06rem}
+  .log p{font-size:.94rem}
+  .tests dt{font-size:.94rem}
+  .tests dd{font-size:.94rem;margin-top:.15rem}
+  .note{padding-left:1rem}
+  .note p{font-size:.96rem}
+
+  /* chapters */
+  .chapter{padding:2.4rem 0 0}
+  .chapter h2{font-size:1.85rem}
+  .chnum{font-size:1.6rem;color:var(--sea-d)}
+  .chapter p{font-size:.98rem}
+
+  /* diagrams */
+  .dia-card{padding:.9rem .8rem;margin:1.6rem 0}
+  .scroll svg{min-width:620px}
+  .swipe{display:block;font-size:.78rem;color:var(--sea-d);text-align:center;
+    margin-top:.7rem;letter-spacing:.02em}
+  figcaption{font-size:.88rem;text-align:left;margin-top:.8rem}
+
+  /* footer */
+  .foot{padding:2.8rem 0 2.6rem}
+  .foot h2{font-size:1.7rem;max-width:none}
+  .cta{gap:.5rem;margin:1.8rem 0}
+  .cta a{padding:.8rem 1.1rem;font-size:.78rem;flex:1 1 auto;text-align:center}
+}
+@media(max-width:560px){
+  .bar b{display:none}
+  .bar nav{width:100%;justify-content:flex-start;font-size:.74rem;gap:1.3rem}
+}
+@media(max-width:400px){
+  .hero h1{font-size:1.85rem}
+  .stats{grid-template-columns:1fr 1fr;gap:1.2rem .8rem}
+}
+
+/* build + footer */
+.build{background:var(--card);border-top:1px solid var(--text)}
+.build ul{max-width:var(--measure)}
+.foot{background:var(--ink);color:var(--on-ink-soft);padding:clamp(3.5rem,7vw,5.5rem) 0 3.5rem}
+.foot h2{color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);margin:0 0 1.2rem;max-width:16ch}
+.foot p{color:var(--on-ink-soft)}
+.foot a{color:var(--on-ink-link)}
+.cta{display:flex;flex-wrap:wrap;gap:.6rem;margin:2.2rem 0}
+.cta a{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+  padding:.85rem 1.5rem;border:1px solid var(--on-ink-rule);color:var(--on-ink)}
+.cta a.primary{background:var(--on-ink);color:var(--ink);border-color:var(--on-ink)}
+.cta a:hover{border-color:var(--on-ink-link)}
+.fine{font-size:.84rem;color:var(--on-ink-dim);border-top:1px solid var(--line-d);
+  padding-top:1.4rem;margin-top:2.6rem;max-width:72ch}
+</style>
+</head><body>
+
+<div class="bar"><div class="wrap">
+  <b>King Albert Lomibao</b>
+  <nav>
+    <a href="#process">Process</a>
+    <a href="#ai">AI</a>
+    <a href="#crewing">Crewing</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">Portfolio 2026</p>
+  <h1>I rebuild manual processes as systems that <em>run themselves</em>.</h1>
+  <p class="lede">Eight of them are in daily use in a maritime operation in Qatar: <b>certificate compliance, crew travel, procurement, dispatch, service requests, workforce forecasting</b>. All built on tools the company already owned, alongside the job of running crewing for 300+ seafarers.</p>
+  <div class="stats"><div class="stat"><b>8</b><span>systems in daily use</span></div><div class="stat"><b>300+</b><span>seafarers supported</span></div><div class="stat"><b>25+</b><span>vessels, two sites</span></div><div class="stat"><b>0</b><span>licence cost</span></div></div>
+  <div class="idcard">
+    <strong>Senior Administrator, crewing operations</strong>
+    <span>Marine services operator, Qatar</span>
+    <span>Al Khor, Qatar</span>
+    <a href="mailto:klomibao2@gmail.com">klomibao2@gmail.com</a>
+    <a href="tel:+97455820224">+974 5582 0224</a>
+    <a href="https://www.linkedin.com/in/king-albert-lomibao-lssgb-193728165">LinkedIn</a>
+  </div>
+</div></header>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><p class="eyebrow">Contents</p><div><h2>The systems</h2>
+  <p>Grouped by what they are, not by when they were built.</p></div></div>
+  <div class="idx"><h3>Process automation</h3><a href="#p01"><span class="n">01</span><span class="nm">Certificate compliance chase<small>Compliance</small></span><span class="st">Live</span></a><a href="#p02"><span class="n">02</span><span class="nm">Departure ticket tracker<small>Crew travel</small></span><span class="st">Live</span></a><a href="#p03"><span class="n">03</span><span class="nm">Procurement requisition workflow<small>Procurement</small></span><span class="st">Live</span></a><a href="#p04"><span class="n">04</span><span class="nm">Driver scheduling engine<small>Logistics</small></span><span class="st">Live</span></a><a href="#p05"><span class="n">05</span><span class="nm">Night shift analysis<small>Cost analysis</small></span><span class="st q">Delivered</span></a><h3>AI in operations</h3><a href="#p06"><span class="n">06</span><span class="nm">Helpline ticketing<small>Service desk</small></span><span class="st">Live</span></a><a href="#p07"><span class="n">07</span><span class="nm">Bosun<small>Agent</small></span><span class="st q">In service</span></a><h3>Crewing and workforce</h3><a href="#p08"><span class="n">08</span><span class="nm">Crewing dashboard<small>Workforce analytics</small></span><span class="st">Live</span></a></div>
+</div></section>
+
+<section class="sec" style="border-top:1px solid var(--rule)"><div class="wrap">
+  <div class="sec-head"><p class="eyebrow">Approach</p><div><h2>How I build</h2>
+  <p>Every system here began as something being done by hand, in an operation that could not stop while it was fixed.</p></div></div>
+  <ol class="method"><li><h3>Watch the manual process first</h3><p>The people doing the work already know where it breaks. The job is to write it down precisely.</p></li><li><h3>Model the data before automating</h3><p>One source table beats five trackers. Most reporting problems are data-structure problems.</p></li><li><h3>Automate the repetition, never the judgement</h3><p>The system prepares the decision. A person still makes it.</p></li><li><h3>Deploy where people already work</h3><p>Excel, Outlook, Teams. No new platform to learn, no licence to buy, no adoption battle.</p></li><li><h3>Measure before and after</h3><p>If the saving cannot be stated as a number, the change was not worth making.</p></li></ol>
+</div></section>
+
+<section class="chapter" id="process"><div class="wrap"><div class="inner"><div class="chnum">I</div><div><h2>Process automation</h2><p>Five processes that used to live in inboxes and memory. Each was written down, modelled, automated where the work was repetitive, and measured afterwards.</p></div></div></div><div class="wrap"><section class="project" id="p01"><div class="rail"><span class="n">01</span><span class="st">Live</span><ul><li>Power Automate</li><li>Scheduled and event-driven flows</li><li>Escalation design</li><li>MLC certification compliance</li></ul></div><div><h2>Certificate compliance chase</h2><p class="lead">A seafarer cannot join without valid certificates — safety training, medical, security awareness, watchkeeping endorsements, seaman book, passport. Chasing them was entirely manual: read the rotation planner, work out who is joining, check who is outstanding, write individual emails, and remember who was chased and when. Nothing was recorded, so nobody could prove a crew member had been told. Around 56 upcoming joiners had documents outstanding at any time, and a certificate missed until the joining week means a cancelled ticket, a short-manned vessel, or a crew member stopped at the gate.</p><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 470" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="ac" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect class="nd" x="0" y="38" width="195" height="56" rx="7"/><text class="t" x="97.5" y="62.5">Rotation planner</text><text class="s" x="97.5" y="80.5">SharePoint workbook</text><rect class="nd" x="0" y="118" width="195" height="56" rx="7"/><text class="t" x="97.5" y="142.5">Personnel table</text><text class="s" x="97.5" y="160.5">crew email addresses</text><rect class="nd nd-dark" x="250" y="50" width="180" height="112" rx="7"/><text class="t-w" x="340" y="79">Daily flow</text><text class="t-w" x="340" y="96">08:00</text><text class="s-w" x="340" y="114">read rows</text><text class="s-w" x="340" y="129">days to sign-on</text><text class="s-w" x="340" y="144">sort by urgency</text><path class="ar" d="M195,66 L250,90" marker-end="url(#ac)"/><path class="ar" d="M195,146 L250,122" marker-end="url(#ac)"/><rect class="nd" x="490" y="6" width="510" height="50" rx="7"/><text class="t" x="745" y="27.5">Escalating reminders to crew</text><text class="s" x="745" y="45.5">30 / 25 / 20 / 15 days, then daily from 14</text><path class="ar" d="M430,106 L490,31" marker-end="url(#ac)"/><rect class="nd" x="490" y="66" width="510" height="50" rx="7"/><text class="t" x="745" y="87.5">Write-back to the source</text><text class="s" x="745" y="105.5">last reminder date, reminder count</text><path class="ar" d="M430,106 L490,91" marker-end="url(#ac)"/><rect class="nd nd-warn" x="490" y="126" width="510" height="50" rx="7"/><text class="t" x="745" y="147.5">Escalation to a person</text><text class="s" x="745" y="165.5">0–2 days out and still outstanding</text><path class="ar" d="M430,106 L490,151" marker-end="url(#ac)"/><rect class="nd" x="490" y="186" width="510" height="50" rx="7"/><text class="t" x="745" y="207.5">Return-date notice</text><text class="s" x="745" y="225.5">14 and 7 days, nothing outstanding</text><path class="ar" d="M430,106 L490,211" marker-end="url(#ac)"/><rect class="nd" x="490" y="246" width="510" height="50" rx="7"/><text class="t" x="745" y="267.5">Reports out</text><text class="s" x="745" y="285.5">daily 08:00 to the team, Sunday 07:00 to management</text><path class="ar" d="M430,106 L490,271" marker-end="url(#ac)"/><line class="rule" x1="0" y1="330" x2="1000" y2="330"/><rect class="nd" x="0" y="362" width="195" height="56" rx="7"/><text class="t" x="97.5" y="386.5">A crew member replies</text><text class="s" x="97.5" y="404.5">to the admin mailbox</text><rect class="nd nd-accent" x="250" y="352" width="180" height="76" rx="7"/><text class="t-w" x="340" y="379">Watcher flow</text><text class="s-w" x="340" y="397">event-driven</text><text class="s-w" x="340" y="412">matched by sender address</text><rect class="nd" x="490" y="362" width="510" height="56" rx="7"/><text class="t" x="745" y="386.5">Teams alert to the verifying admins</text><text class="s" x="745" y="404.5">certificate codes written out in full</text><path class="ar" d="M195,390 L250,390" marker-end="url(#ac)"/><path class="ar" d="M430,390 L490,390" marker-end="url(#ac)"/><text class="s" x="500" y="458" style="text-anchor:middle">A person verifies every certificate. The system flags a possible submission — it never marks anyone compliant.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>The daily cycle, and the separate watcher that handles replies.</figcaption></figure></div><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="al" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect x="0" y="30" width="236" height="86" rx="7" fill="#DCE7EE"/><text class="t" x="118" y="70" fill="#0B2239" font-size="17">Reminder</text><text class="s" x="118" y="92" fill="#0B2239">15+ days out</text><rect x="254" y="30" width="236" height="86" rx="7" fill="#B7D2DC"/><text class="t" x="372" y="70" fill="#0B2239" font-size="17">Important</text><text class="s" x="372" y="92" fill="#0B2239">8–14 days</text><rect x="508" y="30" width="236" height="86" rx="7" fill="#E7BF93"/><text class="t" x="626" y="70" fill="#5C3410" font-size="17">Urgent</text><text class="s" x="626" y="92" fill="#5C3410">4–7 days</text><rect x="762" y="30" width="238" height="86" rx="7" fill="#D9895F"/><text class="t" x="881" y="70" fill="#4A1F0B" font-size="17">Final notice</text><text class="s" x="881" y="92" fill="#4A1F0B">0–3 days</text><path class="ar" d="M0,146 L1000,146" marker-end="url(#al)"/><text class="s" x="0" y="168" style="text-anchor:start">first reminder, 30 days out</text><text class="s" x="1000" y="168" style="text-anchor:end">sign-on</text><text class="s" x="500" y="16" style="text-anchor:middle">Frequency and tone both rise as the joining date approaches. Chasing stops only when an admin verifies the documents.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>The escalation ladder.</figcaption></figure></div><h4>What I built</h4><p>A scheduled automation that reads the rotation planner every morning and runs the whole follow-up cycle unattended, plus a second, event-driven flow that watches the admin mailbox and puts any reply in front of a verifier within minutes.</p><h4>How it works</h4><ol class="steps"><li>At 08:00 the flow reads the rotation log and works out days to sign-on for every joiner.</li><li>It keeps the crew with certificates outstanding, sorts them most urgent first, and matches each to their email address.</li><li>Reminders go at 30, 25, 20 and 15 days, then daily from 14 days out until the documents arrive.</li><li>The source is updated with the last reminder date and count before anyone opens it that morning.</li><li>Crew within two days of joining go to the crewing manager instead of getting another automated email.</li><li>Crew with nothing outstanding get a return-date notice at 14 and 7 days, so joining dates are confirmed rather than assumed.</li><li>Replies are matched by sender address — crew rarely reply in thread — and posted to Teams with the certificate codes written out in full.</li></ol><h4>Result</h4><ul class="res"><li><b>Follow-up runs whether or not anyone remembers it</b> — around 34 crew chased inside the 30-day window on a typical day.</li><li><b>Every reminder is evidenced</b>: date, count and status written back to the source.</li><li><b>Critical cases reach a person</b>, not another automated email.</li><li><b>Reminders send from shared mailboxes</b>, so the process survives its owner being on leave.</li></ul><div class="note"><p>Deliberately not automated: a person verifies every certificate. The system flags a possible submission; it never marks a crew member compliant. Crew occasionally send expired documents, so a reply alone can never be the proof.</p></div></div></section><section class="project" id="p02"><div class="rail"><span class="n">02</span><span class="st">Live</span><ul><li>Process control</li><li>Exception alerting</li><li>Lifecycle modelling</li><li>Automated email</li></ul></div><div><h2>Departure ticket tracker</h2><p class="lead">Crew travel lived in email threads between crewing, the travel agent and the vessels. Whether a ticket was booked, whether a reliever was assigned, and whether a departure was at risk could only be answered by searching an inbox. Bookings were duplicated, made too late, or quietly missed — and a missed departure means a vessel short-manned.</p><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 262" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="at" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect class="nd" x="0" y="60" width="148" height="50" rx="7"/><text class="t" x="74" y="89">Planned ahead</text><path class="ar" d="M148,85 L170,85" marker-end="url(#at)"/><rect class="nd" x="170" y="60" width="148" height="50" rx="7"/><text class="t" x="244" y="89">Departure soon</text><path class="ar" d="M318,85 L340,85" marker-end="url(#at)"/><rect class="nd" x="340" y="60" width="148" height="50" rx="7"/><text class="t" x="414" y="89">Imminent</text><path class="ar" d="M488,85 L510,85" marker-end="url(#at)"/><rect class="nd" x="510" y="60" width="148" height="50" rx="7"/><text class="t" x="584" y="89">Departing today</text><path class="ar" d="M658,85 L680,85" marker-end="url(#at)"/><rect class="nd nd-accent" x="680" y="60" width="148" height="50" rx="7"/><text class="t-w" x="754" y="89">Departed</text><path class="ar" d="M828,85 L850,85" marker-end="url(#at)"/><rect class="nd nd-dark" x="850" y="60" width="148" height="50" rx="7"/><text class="t-w" x="924" y="89">Archived</text><text class="s" x="0" y="36" style="text-anchor:start">Every movement is classified automatically from its departure date and ticket status</text><line class="rule" x1="0" y1="150" x2="1000" y2="150"/><rect class="nd nd-warn" x="0" y="178" width="300" height="62" rx="7"/><text class="t" x="150" y="205.5">Exception detected</text><text class="s" x="150" y="223.5">no ticket · no ETD · no reliever</text><rect class="nd" x="360" y="168" width="280" height="40" rx="7"/><text class="t" x="500" y="192">Alert email to the coordinator</text><rect class="nd" x="360" y="220" width="280" height="40" rx="7"/><text class="t" x="500" y="244">Written to a timestamped log</text><path class="ar" d="M300,200 L360,188" marker-end="url(#at)"/><path class="ar" d="M300,218 L360,240" marker-end="url(#at)"/><rect class="nd" x="700" y="178" width="300" height="62" rx="7"/><text class="t" x="850" y="205.5">Follow-up is evidenced</text><text class="s" x="850" y="223.5">not claimed — every alert has a record</text><path class="ar" d="M640,209 L700,209" marker-end="url(#at)"/></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>Status is derived from the data, and exceptions route themselves.</figcaption></figure></div><h4>What I built</h4><p>One register covering the whole lifecycle from planned to departed, where the status is derived rather than typed, and anything missing raises an alert against the person who owns it.</p><h4>How it works</h4><ol class="steps"><li>One row per movement: departure date, ticket status, visa type, vessel, destination, reliever.</li><li>Logic classifies every record automatically, from planned ahead through to departed.</li><li>Records with no ticket, no departure date or no reliever raise an alert.</li><li>Alerts go out as email and are written to a timestamped log.</li><li>Departed records archive themselves, so the working view only holds live movements.</li></ol><h4>Result</h4><ul class="res"><li><b>The whole travel pipeline visible in one place</b> — planned, booked, on hold and departed.</li><li><b>Lost and duplicated bookings eliminated</b>.</li><li><b>A departure with no reliever is caught days ahead</b>, while it is still a booking problem and not a manning failure.</li><li><b>Chasing replaced by an auditable log</b> of every alert sent.</li></ul></div></section><section class="project" id="p03"><div class="rail"><span class="n">03</span><span class="st">Live</span><ul><li>Workflow design</li><li>Validation at the point of entry</li><li>Process standardisation</li><li>Audit trails</li></ul></div><div><h2>Procurement requisition workflow</h2><p class="lead">Requisitions arrived from vessels as free-form emails, routinely missing a GL code, WBS, part number, unit or quantity. Stores and purchasing spent their time chasing the gaps, approvals stalled, and between raising a request and receiving goods nobody could say where it stood.</p><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 304" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="ap" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect class="nd" x="0" y="40" width="210" height="110" rx="7"/><text class="t" x="105" y="76.5">Vessel raises a request</text><text class="s" x="105" y="94.5">vessel · category · priority</text><text class="s" x="105" y="109.5">item · part no · quantity</text><text class="s" x="105" y="124.5">GL code · WBS · department</text><rect class="nd nd-warn" x="258" y="62" width="150" height="66" rx="7"/><text class="t" x="333" y="84">Validation</text><text class="s" x="333" y="102">nothing incomplete</text><text class="s" x="333" y="117">gets through</text><path class="ar" d="M210,95 L258,95" marker-end="url(#ap)"/><rect class="nd nd-dark" x="456" y="62" width="190" height="66" rx="7"/><text class="t-w" x="551" y="91.5">Request ID issued</text><text class="s-w" x="551" y="109.5">coded email to stores</text><path class="ar" d="M408,95 L456,95" marker-end="url(#ap)"/><text class="s" x="333" y="148" style="text-anchor:middle">returned to the requester</text><path class="ar" d="M333,128 V140" marker-end="url(#ap)"/><rect class="nd" x="700" y="24" width="190" height="46" rx="7"/><text class="t" x="795" y="51">Requisition issued</text><rect class="nd" x="700" y="88" width="190" height="46" rx="7"/><text class="t" x="795" y="115">Order issued</text><rect class="nd" x="700" y="152" width="190" height="46" rx="7"/><text class="t" x="795" y="179">Goods received</text><rect class="nd nd-warn" x="700" y="216" width="190" height="46" rx="7"/><text class="t" x="795" y="243">From stock or rejected</text><path class="ar" d="M646,95 L700,47" marker-end="url(#ap)"/><path class="ar" d="M646,95 L700,111" marker-end="url(#ap)"/><path class="ar" d="M646,95 L700,175" marker-end="url(#ap)"/><path class="ar" d="M646,95 L700,239" marker-end="url(#ap)"/><rect class="nd nd-accent" x="920" y="24" width="80" height="238" rx="7"/><text class="t-w" x="960" y="116">Audit</text><text class="t-w" x="960" y="133">trail</text><text class="s-w" x="960" y="151">dates</text><text class="s-w" x="960" y="166">numbers</text><text class="s-w" x="960" y="181">kept</text><text class="s" x="500" y="292" style="text-anchor:middle">Every request carries its own coding from the moment it is raised, so nothing waits on a missing field.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>Validation sits before the queue, not after it.</figcaption></figure></div><h4>What I built</h4><p>A structured request with controlled fields and attachments, feeding a register that follows each line from submission to goods received. The validation is the point: an incomplete request never enters the queue.</p><h4>How it works</h4><ol class="steps"><li>The requestor completes a validated form covering vessel, category, priority, item, coding and department.</li><li>Submission issues a request ID and sends a fully coded email to stores.</li><li>Status moves through requisition issued, order issued, goods received, from stock, or rejected.</li><li>Dates, order numbers and material numbers are retained as the audit trail.</li></ol><h4>Result</h4><ul class="res"><li><b>Approval cycle time reduced by around 60%</b>; requests no longer wait on missing information.</li><li><b>Incomplete requisitions stopped at source</b> — the form will not accept them.</li><li><b>A complete requisition-to-order trail with dates</b>, audit-ready without reconstruction.</li><li><b>One shared view across technical, stores and purchasing</b> instead of three private ones.</li></ul></div></section><section class="project" id="p04"><div class="rail"><span class="n">04</span><span class="st">Live</span><ul><li>Scheduling engines</li><li>Resource allocation</li><li>Rest-hour compliance</li><li>Rules modelling</li></ul></div><div><h2>Driver scheduling engine</h2><p class="lead">Crew transport across two sites was dispatched by phone and memory. The same recurring runs — morning and evening crew change, food collection, airport transfers, the weekly out-of-town run — were retyped by hand every month. Ad-hoc requests arrived by call. Duplicate trips and missed pickups were usually discovered once crew were already waiting.</p><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 318" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="ad" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect class="nd" x="0" y="30" width="210" height="122" rx="7"/><text class="t" x="105" y="65">Parameters</text><text class="s" x="105" y="83">shift starts</text><text class="s" x="105" y="98">rest hours after nights</text><text class="s" x="105" y="113">standard journey times</text><text class="s" x="105" y="128">fixed locations</text><rect class="nd nd-dark" x="268" y="52" width="170" height="78" rx="7"/><text class="t-w" x="353" y="79">Generate</text><text class="t-w" x="353" y="96">the month</text><text class="s-w" x="353" y="114">one action</text><path class="ar" d="M210,91 L268,91" marker-end="url(#ad)"/><rect class="nd" x="268" y="178" width="170" height="46" rx="7"/><text class="t" x="353" y="205">Crew movements</text><rect class="nd" x="268" y="236" width="170" height="46" rx="7"/><text class="t" x="353" y="263">Ad-hoc requests</text><path class="ar" d="M438,201 L520,150" marker-end="url(#ad)"/><path class="ar" d="M438,259 L520,170" marker-end="url(#ad)"/><rect class="nd nd-accent" x="520" y="52" width="200" height="118" rx="7"/><text class="t-w" x="620" y="100">One board</text><text class="s-w" x="620" y="118">every trip typed, timed,</text><text class="s-w" x="620" y="133">routed and sourced</text><path class="ar" d="M438,91 L520,100" marker-end="url(#ad)"/><rect class="nd" x="772" y="30" width="228" height="62" rx="7"/><text class="t" x="886" y="57.5">Assignment inside the rules</text><text class="s" x="886" y="75.5">rest hours enforced, not remembered</text><rect class="nd" x="772" y="108" width="228" height="62" rx="7"/><text class="t" x="886" y="135.5">Each driver's daily sheet</text><text class="s" x="886" y="153.5">time, task, pickup, drop, crew</text><path class="ar" d="M720,90 L772,61" marker-end="url(#ad)"/><path class="ar" d="M720,120 L772,139" marker-end="url(#ad)"/><text class="s" x="500" y="306" style="text-anchor:middle">Nothing reaches a driver outside the board, so a trip cannot be booked twice or forgotten.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>One board, whatever the source of the job.</figcaption></figure></div><h4>What I built</h4><p>A scheduling engine that generates a full month of recurring transport from a parameter sheet, absorbs everything else into the same board, and assigns drivers inside shift and rest rules.</p><h4>How it works</h4><ol class="steps"><li>Parameters hold shift starts, mandatory rest after night duty, standard journey times and fixed locations.</li><li>One action generates every recurring task for the month.</li><li>Crew movements and ad-hoc requests enter the same board, tagged by source.</li><li>Each driver gets a daily sheet with time, task, pickup, drop and the crew involved.</li></ol><h4>Result</h4><ul class="res"><li><b>A month of transport planning produced in one action</b> instead of line-by-line entry.</li><li><b>Duplicate dispatch eliminated</b> — every trip has one owner, one source, one status.</li><li><b>Rest-hour rules enforced by the schedule</b> rather than remembered by a dispatcher.</li><li><b>Spare capacity is visible</b>, so ad-hoc requests get a real answer.</li></ul></div></section><section class="project" id="p05"><div class="rail"><span class="n">05</span><span class="st q">Delivered</span><ul><li>Root-cause analysis</li><li>Lean Six Sigma</li><li>Cost control</li><li>Data-driven rostering</li></ul></div><div><h2>Night shift analysis</h2><p class="lead">Crew arriving on late flights were routinely booked into a Doha hotel overnight because no transport was rostered at that hour — around thirteen hotel nights a month, every month, plus the cost, the administration, and a lost day of the crew member's rotation. It had been accepted as unavoidable.</p><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 326" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="ah" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><line class="grid" x1="40" y1="268" x2="980" y2="268"/><text class="s" x="30" y="272" style="text-anchor:end">0</text><line class="grid" x1="40" y1="218" x2="980" y2="218"/><text class="s" x="30" y="222" style="text-anchor:end">5</text><line class="grid" x1="40" y1="168" x2="980" y2="168"/><text class="s" x="30" y="172" style="text-anchor:end">10</text><line class="grid" x1="40" y1="118" x2="980" y2="118"/><text class="s" x="30" y="122" style="text-anchor:end">15</text><line class="grid" x1="40" y1="68" x2="980" y2="68"/><text class="s" x="30" y="72" style="text-anchor:end">20</text><rect x="43.9091" y="68" width="34" height="200" rx="2" fill="#9FB8C6"/><text class="s" x="60.9091" y="284" font-size="10">J</text><rect x="85.7273" y="68" width="34" height="200" rx="2" fill="#9FB8C6"/><text class="s" x="102.727" y="284" font-size="10">F</text><rect x="127.545" y="68" width="34" height="200" rx="2" fill="#9FB8C6"/><text class="s" x="144.545" y="284" font-size="10">M</text><rect x="169.364" y="88" width="34" height="180" rx="2" fill="#9FB8C6"/><text class="s" x="186.364" y="284" font-size="10">A</text><rect x="211.182" y="148" width="34" height="120" rx="2" fill="#9FB8C6"/><text class="s" x="228.182" y="284" font-size="10">M</text><rect x="253" y="178" width="34" height="90" rx="2" fill="#9FB8C6"/><text class="s" x="270" y="284" font-size="10">J</text><rect x="294.818" y="158" width="34" height="110" rx="2" fill="#9FB8C6"/><text class="s" x="311.818" y="284" font-size="10">J</text><rect x="336.636" y="158" width="34" height="110" rx="2" fill="#9FB8C6"/><text class="s" x="353.636" y="284" font-size="10">A</text><rect x="378.455" y="118" width="34" height="150" rx="2" fill="#9FB8C6"/><text class="s" x="395.455" y="284" font-size="10">S</text><rect x="420.273" y="208" width="34" height="60" rx="2" fill="#9FB8C6"/><text class="s" x="437.273" y="284" font-size="10">O</text><rect x="462.091" y="238" width="34" height="30" rx="2" fill="#9FB8C6"/><text class="s" x="479.091" y="284" font-size="10">N</text><rect x="503.909" y="158" width="34" height="110" rx="2" fill="#9FB8C6"/><text class="s" x="520.909" y="284" font-size="10">D</text><rect x="545.727" y="188" width="34" height="80" rx="2" fill="#1B7A82"/><text class="s" x="562.727" y="284" font-size="10">J</text><rect x="587.545" y="238" width="34" height="30" rx="2" fill="#1B7A82"/><text class="s" x="604.545" y="284" font-size="10">F</text><rect x="629.364" y="228" width="34" height="40" rx="2" fill="#1B7A82"/><text class="s" x="646.364" y="284" font-size="10">M</text><rect x="671.182" y="228" width="34" height="40" rx="2" fill="#1B7A82"/><text class="s" x="688.182" y="284" font-size="10">A</text><rect x="713" y="218" width="34" height="50" rx="2" fill="#1B7A82"/><text class="s" x="730" y="284" font-size="10">M</text><rect x="754.818" y="228" width="34" height="40" rx="2" fill="#1B7A82"/><text class="s" x="771.818" y="284" font-size="10">J</text><rect x="796.636" y="228" width="34" height="40" rx="2" fill="#1B7A82"/><text class="s" x="813.636" y="284" font-size="10">J</text><rect x="838.455" y="248" width="34" height="20" rx="2" fill="#1B7A82"/><text class="s" x="855.455" y="284" font-size="10">A</text><rect x="880.273" y="258" width="34" height="10" rx="2" fill="#1B7A82"/><text class="s" x="897.273" y="284" font-size="10">S</text><rect x="922.091" y="258" width="34" height="10" rx="2" fill="#1B7A82"/><text class="s" x="939.091" y="284" font-size="10">O</text><line class="divide" x1="541.818" y1="46" x2="541.818" y2="268"/><line class="avg" x1="40" y1="138" x2="541.818" y2="138"/><line class="avg" x1="541.818" y1="232" x2="980" y2="232"/><text class="t" x="529.818" y="129" style="text-anchor:end" font-size="13">13 a month</text><text class="t" x="978" y="223" style="text-anchor:end" font-size="13" fill="#125C63">3.6 a month</text><text class="s" x="40" y="38" style="text-anchor:start">2024 — before</text><text class="s" x="551.818" y="38" style="text-anchor:start" fill="#125C63">2025 — night rotation in place</text><text class="s" x="40" y="24" style="text-anchor:start">Crew hotel nights per month</text><text class="s" x="500" y="314" style="text-anchor:middle">156 hotel nights across 2024, 36 across the ten months that followed.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>The change, and whether it held.</figcaption></figure></div><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 246" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="ac2" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><text class="t" x="0" y="54" style="text-anchor:start" font-size="13">Flight availability</text><rect x="250" y="40" width="620" height="20" rx="2" fill="#1B7A82"/><text class="s" x="880" y="55" style="text-anchor:start">90</text><text class="t" x="0" y="88" style="text-anchor:start" font-size="13">Immigration</text><rect x="250" y="74" width="544.222" height="20" rx="2" fill="#1B7A82"/><text class="s" x="804.222" y="89" style="text-anchor:start">79</text><text class="t" x="0" y="122" style="text-anchor:start" font-size="13">Other</text><rect x="250" y="108" width="130.889" height="20" rx="2" fill="#1B7A82"/><text class="s" x="390.889" y="123" style="text-anchor:start">19</text><text class="t" x="0" y="156" style="text-anchor:start" font-size="13">Documentation</text><rect x="250" y="142" width="20.6667" height="20" rx="2" fill="#1B7A82"/><text class="s" x="280.667" y="157" style="text-anchor:start">3</text><text class="t" x="0" y="190" style="text-anchor:start" font-size="13">No transport available</text><rect x="250" y="176" width="6.88889" height="20" rx="2" fill="#1B7A82"/><text class="s" x="266.889" y="191" style="text-anchor:start">1</text><text class="s" x="0" y="20" style="text-anchor:start">Why crew ended up in a hotel, 192 cases coded</text><text class="s" x="500" y="234" style="text-anchor:middle">Late flights and immigration were the causes of the delay. The night rotation removed the overnight stay that used to follow.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>What was actually causing it.</figcaption></figure></div><h4>What I built</h4><p>Not software. Twenty-two months of hotel usage coded by root cause and tested against driver shift coverage, then a night rotation introduced to cover the window nobody was working.</p><h4>How it works</h4><ol class="steps"><li>Every hotel night logged by month, site and cause across 2024 and 2025.</li><li>Causes grouped and counted across 192 records.</li><li>Arrival patterns mapped against the driver roster to find the uncovered window.</li><li>A night rotation introduced to cover it, within rest-hour rules.</li><li>Usage tracked monthly afterwards to confirm the change held.</li></ol><h4>Result</h4><ul class="res"><li><b>From about thirteen hotel nights a month to three or four</b>, sustained across the following year.</li><li><b>A recurring cost removed from the crewing budget</b> — and evidenced, which made the next budget defensible.</li><li><b>Crew go straight to vessel or camp</b> instead of losing a night in Doha.</li><li><b>The remaining cases are genuine exceptions</b>, not routine.</li></ul></div></section></div></section><section class="chapter" id="ai"><div class="wrap"><div class="inner"><div class="chnum">II</div><div><h2>AI in operations</h2><p>Two systems where a model does real work inside boundaries I set deliberately. Both are built so that being wrong is visible rather than quiet.</p></div></div></div><div class="wrap"><section class="project" id="p06"><div class="rail"><span class="n">06</span><span class="st">Live</span><ul><li>Power Automate</li><li>Applied language models</li><li>Service-desk design</li><li>Email-to-database integration</li></ul></div><div><h2>Helpline ticketing</h2><p class="lead">Employee requests — payroll, leave and repatriation, contract extensions, certificates, travel — arrived from vessels into individual inboxes. Nothing was tracked. Requests were lost when someone went on rotation, answered twice by different people, or chased verbally on the quayside. There was no record of what had been asked, or when.</p><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 304" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="ahp" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect class="nd nd-dark" x="0" y="40" width="232" height="62" rx="7"/><text class="t-w" x="116" y="67.5">A crew member emails</text><text class="s-w" x="116" y="85.5">one address, no form</text><path class="ar" d="M232,71 L256,71" marker-end="url(#ahp)"/><rect class="nd" x="256" y="40" width="232" height="62" rx="7"/><text class="t" x="372" y="67.5">Ticket number issued</text><text class="s" x="372" y="85.5">next in sequence</text><path class="ar" d="M488,71 L512,71" marker-end="url(#ahp)"/><rect class="nd" x="512" y="40" width="232" height="62" rx="7"/><text class="t" x="628" y="67.5">Logged to the database</text><text class="s" x="628" y="85.5">searchable, shared</text><path class="ar" d="M744,71 L768,71" marker-end="url(#ahp)"/><rect class="nd" x="768" y="40" width="232" height="62" rx="7"/><text class="t" x="884" y="67.5">Reply sent back</text><text class="s" x="884" y="85.5">with the reference</text><rect class="nd nd-accent" x="280" y="152" width="440" height="88" rx="7"/><text class="t-w" x="500" y="177.5">The model reads the message</text><text class="s-w" x="500" y="195.5">a clean subject line</text><text class="s-w" x="500" y="210.5">a one-line summary</text><text class="s-w" x="500" y="225.5">a category — payroll, leave, travel</text><path class="ar" d="M400,102 V152" marker-end="url(#ahp)"/><path class="ar" d="M640,240 V262 H904 V102" marker-end="url(#ahp)"/><text class="s" x="500" y="292" style="text-anchor:middle">The categorisation is a starting point for the person answering, not the answer itself.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>Where the model sits, and what it is allowed to touch.</figcaption></figure></div><h4>What I built</h4><p>An email-to-ticket system: one address, automatic numbering, a searchable database, and a model that reads each message to produce a clean subject, a summary and a category before a person picks it up.</p><h4>How it works</h4><ol class="steps"><li>A crew member emails the shared address. No form, no training, no new tool.</li><li>The flow reads the last ticket number and issues the next one.</li><li>The request is written into the shared database.</li><li>The model produces a clean subject, a one-line summary and a category.</li><li>An automatic reply confirms receipt and gives the requester their reference.</li></ol><h4>Result</h4><ul class="res"><li><b>Every request tracked</b> — nothing disappears into a personal inbox.</li><li><b>Immediate confirmation with a reference</b>, which stops duplicate chasing.</li><li><b>A searchable history by category, crew, vessel and priority</b> — the raw material for fixing recurring causes.</li><li><b>Response accountability made visible</b>.</li></ul><div class="note"><p>The categorisation is triage, not judgement. It sorts and summarises so the person answering starts from something readable — it never decides an outcome, and a wrong category is visible on the ticket rather than buried.</p></div></div></section><section class="project" id="p07"><div class="rail"><span class="n">07</span><span class="st q">In service</span><ul><li>Copilot Studio</li><li>Agent grounding</li><li>Power Automate tools</li><li>Failure-mode testing</li><li>Teams deployment</li></ul></div><div><h2>Bosun <em>my first working agent</em></h2><p class="lead">Routine crewing questions — which vessel is this crew member on, when is he due off, who is relieving him, what certificates is he still missing — all required opening the planner. Away from a laptop, or on leave, it meant calling whoever was in the office. The information existed; the access did not.</p><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 274" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="ab" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect class="nd" x="0" y="60" width="214" height="74" rx="7"/><text class="t" x="107" y="93.5">A question in Teams</text><text class="s" x="107" y="111.5">“which vessel is he on?”</text><rect class="nd nd-dark" x="262" y="60" width="200" height="74" rx="7"/><text class="t-w" x="362" y="93.5">The agent</text><text class="s-w" x="362" y="111.5">parses the request</text><rect class="nd nd-accent" x="510" y="60" width="214" height="74" rx="7"/><text class="t-w" x="617" y="93.5">A lookup flow</text><text class="s-w" x="617" y="111.5">queries the live table</text><rect class="nd" x="772" y="60" width="228" height="74" rx="7"/><text class="t" x="886" y="93.5">Personnel data</text><text class="s" x="886" y="111.5">the same source crewing uses</text><path class="ar" d="M214,84 L262,84" marker-end="url(#ab)"/><path class="ar" d="M462,84 L510,84" marker-end="url(#ab)"/><path class="ar" d="M724,84 L772,84" marker-end="url(#ab)"/><path class="ar" d="M772,112 L724,112" marker-end="url(#ab)"/><path class="ar" d="M510,112 L462,112" marker-end="url(#ab)"/><path class="ar" d="M262,112 L214,112" marker-end="url(#ab)"/><rect class="nd nd-ghost" x="262" y="176" width="462" height="56" rx="7"/><text class="t" x="493" y="200.5">Not used: the spreadsheet as a knowledge source</text><text class="s" x="493" y="218.5">an earlier version did, and confidently invented a manning shortage</text><path class="ar" d="M493,134 V176" stroke-dasharray="5 5" marker-end="url(#ab)"/><text class="s" x="500" y="262" style="text-anchor:middle">The agent answers only with what the tool returned, so it cannot invent a vessel or a date.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>What it reads from, and what it deliberately does not.</figcaption></figure></div><h4>What I built</h4><p>An agent published to Microsoft Teams and usable from a phone, answering plain-English questions by crew name or vessel. It is backed by lookup flows rather than an indexed spreadsheet, so every answer comes from a live query against the same data crewing works from.</p><h4>What it answers</h4><ul class="plain"><li>Where a crew member is right now, and which vessel he is allocated to</li><li>When he is due off, and who his reliever is</li><li>Who a given crew member is relieving</li><li>Which certificates are still pending for crew arriving soon</li><li>How many crew of each rank are missing on a vessel</li></ul><h4>How it works</h4><ol class="steps"><li>The question is asked in ordinary language, by name or vessel rather than staff number.</li><li>The agent calls a lookup flow with the search term.</li><li>The flow reads the live personnel table and matches partial name or exact staff number.</li><li>A second lookup covers reliever data, which sits in a different table in the same workbook.</li><li>The agent answers only with what the tools returned.</li></ol><h4>Build log</h4><ol class="log"><li><h5>The first attempt was deleted</h5><p>An earlier agent used the workbook itself as a knowledge source. Asked about a vessel's engineer complement, it produced a confident, wrong answer. I deleted it rather than patch it, and rebuilt on tools only — an assistant that is occasionally wrong about manning is worse than none, because people stop checking.</p></li><li><h5>The tool the agent could not see</h5><p>The lookup flow existed and worked, but sitting in my own flows it never appeared in the agent's tool picker. Rather than keep hunting for the permission, I rebuilt the flow inside the agent itself and copied the expressions across from the original.</p></li><li><h5>The field that lied about its own name</h5><p>The flow kept failing on a null. The trigger input had been renamed to something readable, but its internal name never changed — the filter was matching against a label that did not exist. Referencing the internal name fixed it. Half a day, one line.</p></li><li><h5>Working, and then extended</h5><p>Partial-name search returns the single correct row. Once that held, I added reliever lookups and pending certificates, so it now answers the questions I was actually being asked rather than the one it was built for.</p></li></ol><h4>How I tried to break it</h4><dl class="tests"><div><dt>A crew member who does not exist</dt><dd>Says so, rather than guessing at the nearest name.</dd></div><div><dt>A question about rank</dt><dd>Answers from the tool, and only for the crew it actually returned.</dd></div><div><dt>A vessel question outside its tools</dt><dd>Declines instead of improvising an answer.</dd></div><div><dt>“When am I off?”</dt><dd>Resolved the asker, returned the correct date.</dd></div></dl><h4>Result</h4><ul class="res"><li><b>Crewing questions answered from a phone, against live data</b>.</li><li><b>Grounded by design</b>: no spreadsheet indexing, so it cannot invent a vessel or a date.</li><li><b>It fails loudly</b>, which is the only reason it is safe to let other people use it.</li><li><b>Next: overdue counts by vessel and reliever availability</b>, then flow actions, controlled write-back and approvals.</li></ul><div class="note"><p>This is the first agent I have built that anyone else can rely on. What made it work was not the model — it was refusing to let it read anything it might misread, and testing it on the questions where a wrong answer would have been expensive.</p></div></div></section></div></section><section class="chapter" id="crewing"><div class="wrap"><div class="inner"><div class="chnum">III</div><div><h2>Crewing and workforce</h2><p>The analytics layer underneath the day job: manning, retention, utilisation and a hiring forecast for a 300-strong seafaring workforce.</p></div></div></div><div class="wrap"><section class="project" id="p08"><div class="rail"><span class="n">08</span><span class="st">Live</span><ul><li>Data modelling</li><li>Workforce analytics</li><li>Manpower forecasting</li><li>Exception reporting</li></ul></div><div><h2>Crewing dashboard</h2><p class="lead">Manning status, certificate validity, joiner and leaver history and hiring needs lived in separate workbooks and inboxes. Building a monthly picture of 300+ crew across 25+ vessels took days of consolidation, and the answer was out of date by the time it was circulated. Nobody could say on demand which ranks were about to fall short, or how many people would need hiring next year.</p><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 312" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="adb" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect class="nd" x="0" y="20" width="230" height="56" rx="7"/><text class="t" x="115" y="52">Crew master</text><rect class="nd" x="0" y="96" width="230" height="56" rx="7"/><text class="t" x="115" y="128">Vessel manning contracts</text><rect class="nd" x="0" y="172" width="230" height="56" rx="7"/><text class="t" x="115" y="204">Certificates and training</text><rect class="nd nd-dark" x="300" y="76" width="180" height="116" rx="7"/><text class="t-w" x="390" y="115.5">One data model</text><text class="s-w" x="390" y="133.5">governed</text><text class="s-w" x="390" y="148.5">refreshed in</text><text class="s-w" x="390" y="163.5">a single action</text><path class="ar" d="M230,48 L300,134" marker-end="url(#adb)"/><path class="ar" d="M230,124 L300,134" marker-end="url(#adb)"/><path class="ar" d="M230,200 L300,134" marker-end="url(#adb)"/><rect class="nd" x="560" y="6" width="440" height="46" rx="7"/><text class="t" x="780" y="33">Manning gap by rank and vessel</text><path class="ar" d="M480,134 L560,29" marker-end="url(#adb)"/><rect class="nd" x="560" y="60" width="440" height="46" rx="7"/><text class="t" x="780" y="87">Retention and attrition by rank</text><path class="ar" d="M480,134 L560,83" marker-end="url(#adb)"/><rect class="nd" x="560" y="114" width="440" height="46" rx="7"/><text class="t" x="780" y="141">FTE and utilisation</text><path class="ar" d="M480,134 L560,137" marker-end="url(#adb)"/><rect class="nd" x="560" y="168" width="440" height="46" rx="7"/><text class="t" x="780" y="195">Certificates and medicals due</text><path class="ar" d="M480,134 L560,191" marker-end="url(#adb)"/><rect class="nd" x="560" y="222" width="440" height="46" rx="7"/><text class="t" x="780" y="249">Twelve-month hiring forecast</text><path class="ar" d="M480,134 L560,245" marker-end="url(#adb)"/><text class="s" x="500" y="300" style="text-anchor:middle">Most reporting problems are data-structure problems. Fix the model once and every view follows.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>One model, many views.</figcaption></figure></div><div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="ahr" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect x="60" y="162" width="52" height="48" rx="2" fill="#0B2239"/><rect x="118" y="195.6" width="52" height="14.4" rx="2" fill="#9FB8C6"/><text class="s" x="86" y="154">20</text><text class="s" x="144" y="187.6">6</text><text class="t" x="115" y="232" font-size="13">2023</text><rect x="250" y="68.4" width="52" height="141.6" rx="2" fill="#0B2239"/><rect x="308" y="174" width="52" height="36" rx="2" fill="#9FB8C6"/><text class="s" x="276" y="60.4">59</text><text class="s" x="334" y="166">15</text><text class="t" x="305" y="232" font-size="13">2024</text><rect x="440" y="104.4" width="52" height="105.6" rx="2" fill="#0B2239"/><rect x="498" y="183.6" width="52" height="26.4" rx="2" fill="#9FB8C6"/><text class="s" x="466" y="96.4">44</text><text class="s" x="524" y="175.6">11</text><text class="t" x="495" y="232" font-size="13">2025</text><rect x="650" y="126" width="110" height="84" rx="2" fill="#1B7A82"/><text class="t" x="705" y="116" font-size="15" fill="#125C63">35</text><text class="t" x="705" y="232" font-size="13">2026 forecast</text><line class="rule" x1="0" y1="210" x2="1000" y2="210"/><text class="s" x="0" y="20" style="text-anchor:start">Hires and leavers by year, and the 2026 requirement the model produced</text><text class="s" x="0" y="38" style="text-anchor:start" fill="#5B6B78">dark: hires · grey: leavers · teal: forecast need, 7 age exits plus 28 replacements</text><text class="s" x="500" y="268" style="text-anchor:middle">The forecast turns a yearly guess into a number recruitment can act on, broken down by rank.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>What the forecast produced.</figcaption></figure></div><h4>What I built</h4><p>One data model over crew master data, manning contracts and certificate records. A single refresh rebuilds every view — manning gap, retention, utilisation, certificates due, and a rolling twelve-month hiring forecast.</p><h4>How it works</h4><ol class="steps"><li>Three source tables feed one governed model.</li><li>A refresh rebuilds all views and exception lists in a single action.</li><li>Exception logic flags overdue medicals, expiring certificates and crew reaching the age limit within twelve months.</li><li>The forecast converts planned exits plus historic attrition into a hiring requirement, by rank.</li></ol><h4>Result</h4><ul class="res"><li><b>Monthly reporting effort cut by around 60%</b> — consolidation replaced by one refresh.</li><li><b>Manning gaps surface by rank and vessel</b> before they become a failed crew change.</li><li><b>A 2026 hiring requirement of 35</b>: 7 age exits and 28 replacements, with the rank breakdown recruitment needs.</li><li><b>Compliance position audit-ready at any moment</b>, not reconstructed the week before an inspection.</li></ul></div></section></div></section>
+
+<section class="sec build"><div class="wrap">
+  <div class="sec-head"><p class="eyebrow">Next</p><div><h2>In build: crew movement approvals</h2>
+  <p>Movements are still approved by email reply, retyped into a document, signed with a pasted image, converted to PDF and filed by hand.</p></div></div>
+  <div class="dia-card"><figure><div class="scroll"><svg class="dia" viewBox="0 0 1000 304" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><defs><marker id="aap" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path class="arh" d="M0,0 L10,5 L0,10 z"/></marker></defs><rect class="nd nd-dark" x="0" y="76" width="210" height="66" rx="7"/><text class="t-w" x="105" y="105.5">A movement is logged</text><text class="s-w" x="105" y="123.5">on the crewing dashboard</text><rect class="nd" x="268" y="20" width="240" height="58" rx="7"/><text class="t" x="388" y="45.5">Port Captain and Operations</text><text class="s" x="388" y="63.5">deck crew</text><rect class="nd" x="268" y="96" width="240" height="58" rx="7"/><text class="t" x="388" y="121.5">Technical Superintendent</text><text class="s" x="388" y="139.5">technical crew</text><rect class="nd" x="268" y="172" width="240" height="58" rx="7"/><text class="t" x="388" y="197.5">Fleet and Crewing Manager</text><text class="s" x="388" y="215.5">always notified</text><path class="ar" d="M210,109 L268,49" marker-end="url(#aap)"/><path class="ar" d="M210,109 L268,125" marker-end="url(#aap)"/><path class="ar" d="M210,109 L268,201" marker-end="url(#aap)"/><text class="s" x="388" y="254" style="text-anchor:middle">requested in parallel, never in sequence</text><rect class="nd" x="566" y="60" width="236" height="46" rx="7"/><text class="t" x="684" y="79.5">Approved</text><text class="s" x="684" y="97.5">identity and time recorded</text><rect class="nd nd-warn" x="566" y="118" width="236" height="46" rx="7"/><text class="t" x="684" y="137.5">No reply in 48 hours</text><text class="s" x="684" y="155.5">reminder to the approver</text><rect class="nd nd-warn" x="566" y="176" width="236" height="46" rx="7"/><text class="t" x="684" y="195.5">No reply in 96 hours</text><text class="s" x="684" y="213.5">escalated to the Fleet Manager</text><path class="ar" d="M508,125 L566,83" marker-end="url(#aap)"/><path class="ar" d="M508,125 L566,141" marker-end="url(#aap)"/><path class="ar" d="M508,125 L566,199" marker-end="url(#aap)"/><rect class="nd nd-accent" x="852" y="60" width="148" height="162" rx="7"/><text class="t-w" x="926" y="121.5">Written back</text><text class="t-w" x="926" y="138.5">to the log</text><text class="s-w" x="926" y="156.5">plus the platform’s</text><text class="s-w" x="926" y="171.5">own run history</text><path class="ar" d="M802,83 L852,120" marker-end="url(#aap)"/><text class="s" x="500" y="292" style="text-anchor:middle">The approver signs in to respond, so identity and time are recorded by the system rather than typed into a document.</text></svg></div><p class="swipe">Swipe to see the whole diagram</p><figcaption>Approvals in parallel, with escalation built into the wait.</figcaption></figure></div>
+  <ul class="plain">
+    <li>Logging a movement raises the approval automatically, to the right approvers at the same time.</li>
+    <li>The approver signs in to respond, so identity and timestamp are recorded by the system rather than typed — stronger evidence than a pasted signature, which is why the document and PDF steps are being removed entirely.</li>
+    <li>Three movement types — relief, shift, and temporary higher position — each with its own required fields.</li>
+    <li>Two independent audit trails: the approval written back to the log, and the platform's own run history.</li>
+  </ul>
+</div></section>
+
+<footer class="foot" id="contact"><div class="wrap">
+  <p class="eyebrow" style="color:var(--on-ink-dim)">Contact</p>
+  <h2>Built alongside the day job, and still running.</h2>
+  <p>No budget, no development team, no new software. If your organisation runs on spreadsheets and email — most do — the same approach transfers.</p>
+  <div class="cta">
+    <a class="primary" href="mailto:klomibao2@gmail.com">Email me</a>
+    <a href="King_Albert_Lomibao_CV_2026.pdf">Curriculum vitae</a>
+    <a href="King_Albert_Lomibao_Portfolio_2026.pdf">Portfolio PDF</a>
+    <a href="https://www.linkedin.com/in/king-albert-lomibao-lssgb-193728165">LinkedIn</a>
+  </div>
+  <p>Lean Six Sigma Green Belt · NEBOSH IGC · Level 4 Diploma in Business Management · BSc Business Administration, Operations Management (expected October 2026) · PMP in preparation</p>
+  <p class="fine">The diagrams describe how these systems work. No screenshots, crew data, employee records or company material are published here. Live walkthroughs and references available on request.</p>
+</div></footer>
+</body></html>
