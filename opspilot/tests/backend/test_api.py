@@ -43,6 +43,19 @@ def test_dashboard_summary_endpoint(db):
     assert "staffing_shortages" in body
 
 
+def test_employee_search_matches_full_name(db):
+    role = make_role(db)
+    make_employee(db, role, first_name="John", last_name="Smith")
+    make_employee(db, role, first_name="Jane", last_name="Doe")
+    client = make_client(db)
+
+    response = client.get("/api/employees", params={"search": "John Smith"})
+
+    assert response.status_code == 200
+    names = [e["full_name"] for e in response.json()]
+    assert names == ["John Smith"]
+
+
 def test_employee_detail_not_found_returns_404(db):
     client = make_client(db)
     response = client.get("/api/employees/999999")

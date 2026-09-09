@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
-from sqlalchemy import or_
+from sqlalchemy import func, or_
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -13,7 +13,9 @@ router = APIRouter(prefix="/api/employees", tags=["employees"])
 def list_employees(
     role_id: int | None = None,
     availability_status: str | None = None,
-    search: str | None = Query(default=None, description="Matches first or last name, case-insensitively."),
+    search: str | None = Query(
+        default=None, description="Matches first name, last name, or full name, case-insensitively."
+    ),
     db: Session = Depends(get_db),
 ) -> list[EmployeeSummarySchema]:
     query = db.query(Employee)
@@ -23,7 +25,10 @@ def list_employees(
         query = query.filter(Employee.availability_status == availability_status)
     if search:
         pattern = f"%{search}%"
-        query = query.filter(or_(Employee.first_name.ilike(pattern), Employee.last_name.ilike(pattern)))
+        full_name = func.concat(Employee.first_name, " ", Employee.last_name)
+        query = query.filter(
+            or_(Employee.first_name.ilike(pattern), Employee.last_name.ilike(pattern), full_name.ilike(pattern))
+        )
 
     employees = query.order_by(Employee.last_name, Employee.first_name).all()
     return [EmployeeSummarySchema.from_orm_employee(e) for e in employees]

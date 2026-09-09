@@ -76,14 +76,16 @@ def make_employee(
     db: Session,
     role: Role,
     *,
+    first_name: str | None = None,
+    last_name: str | None = None,
     active: bool = True,
     employment_status: EmploymentStatus = EmploymentStatus.ACTIVE,
     availability_status: AvailabilityStatus = AvailabilityStatus.AVAILABLE,
 ) -> Employee:
     employee = Employee(
         employee_number=_unique("EMP"),
-        first_name=_unique("First"),
-        last_name=_unique("Last"),
+        first_name=first_name or _unique("First"),
+        last_name=last_name or _unique("Last"),
         role_id=role.id,
         employment_status=employment_status,
         availability_status=availability_status,
