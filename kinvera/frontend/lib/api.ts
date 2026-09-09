@@ -5,6 +5,7 @@
 // just knows *how*.
 
 import type {
+  AssistantChatResponse,
   DashboardSummary,
   EmployeeDetail,
   EmployeeSummary,
@@ -65,4 +66,10 @@ export const simulateExtension = (assignmentId: number, extensionDays: number) =
   apiFetch<ExtensionSimulationResponse>(`/api/assignments/${assignmentId}/simulate-extension`, {
     method: "POST",
     body: JSON.stringify({ extension_days: extensionDays }),
+  });
+
+export const sendAssistantMessage = (message: string, conversationId?: string) =>
+  apiFetch<AssistantChatResponse>("/api/assistant/chat", {
+    method: "POST",
+    body: JSON.stringify({ message, conversation_id: conversationId }),
   });

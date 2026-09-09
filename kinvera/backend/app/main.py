@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import (
     assignments,
+    assistant,
     dashboard,
     employees,
     movements,
@@ -54,6 +55,7 @@ app.include_router(qualifications.router)
 app.include_router(relief.router)
 app.include_router(replacement.router)
 app.include_router(simulation.router)
+app.include_router(assistant.router)
 
 
 @app.get("/api/health", tags=["health"])

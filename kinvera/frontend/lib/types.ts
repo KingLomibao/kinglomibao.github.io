@@ -186,3 +186,27 @@ export interface ExtensionSimulationResponse {
   eligible_alternatives: EligibilityResult[];
   rejected_alternatives: EligibilityResult[];
 }
+
+// --- AI Assistant (Phase 2) -------------------------------------------
+//
+// `tool_results` carries the raw, deterministic data each Kinvera tool
+// returned - this is the ground truth the UI renders structured
+// widgets from. `answer` is the LLM's explanation of that data; it is
+// display-only prose, never a second source of operational fact.
+
+export interface AssistantToolCall {
+  tool: string;
+  arguments: Record<string, unknown>;
+}
+
+export interface AssistantToolResult {
+  tool: string;
+  result: Record<string, unknown>;
+}
+
+export interface AssistantChatResponse {
+  answer: string;
+  tool_calls: AssistantToolCall[];
+  sources: string[];
+  tool_results: AssistantToolResult[];
+}

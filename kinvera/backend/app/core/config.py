@@ -62,5 +62,13 @@ class Settings(BaseSettings):
             return json.loads(raw)
         return [origin.strip() for origin in raw.split(",") if origin.strip()]
 
+    # AI assistant (Phase 2). No default for the API key - if it's
+    # unset, the assistant endpoint reports itself as not configured
+    # rather than the app failing to start (this is optional
+    # functionality; the rest of Kinvera works without it).
+    llm_provider: str = "anthropic"
+    llm_api_key: str | None = None
+    llm_model: str = "claude-sonnet-4-5"
+
 
 settings = Settings()

@@ -8,10 +8,11 @@ Every conclusion this system reaches about workforce eligibility,
 qualification compliance, availability, staffing sufficiency, or
 operational conflict comes from ordinary, deterministic Python code
 evaluating structured database records - never from a language model.
-Phase 1 contains no AI at all; it exists to make that separation
-concrete before an AI layer is ever introduced. See
-[Future AI Integration](#future-ai-integration) for how that will
-attach without changing this rule.
+Phase 1 built the deterministic foundation with no AI at all, on
+purpose, to make that separation concrete before an AI layer was ever
+introduced. Phase 2 added a grounded AI assistant on top without
+touching that foundation - see [AI integration (Phase 2)](#ai-integration-phase-2)
+and [docs/ai-architecture.md](./ai-architecture.md).
 
 ## System overview
 
@@ -130,9 +131,12 @@ downstream conflict without turning into an open-ended scheduling
 solver. A deeper chain (mirroring further downstream reliefs) is a
 natural, additive extension for a later phase.
 
-## Future AI integration
+## AI integration (Phase 2)
 
-**Not built in Phase 1.** The intended architecture for a later phase:
+**Implemented.** What follows was the Phase 1 plan for a later phase; it is now built exactly as
+described, in `backend/app/ai/`. See [docs/ai-architecture.md](./ai-architecture.md) for the full
+detail (request-flow diagram, tool layer, provider abstraction, hallucination-resistance
+mechanism, ambiguity handling, and stated limitations).
 
 ```
 Operations manager asks a question

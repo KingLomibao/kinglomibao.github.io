@@ -8,6 +8,7 @@ const LINKS = [
   { href: "/employees", label: "Employees" },
   { href: "/sites", label: "Sites" },
   { href: "/simulate", label: "Scenario Simulation" },
+  { href: "/assistant", label: "Assistant" },
 ];
 
 export function NavBar() {
