@@ -138,7 +138,7 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 
 # create the database (see database/README.md for the exact commands)
-cp .env.example .env   # adjust DATABASE_URL if needed
+cp .env.example .env   # DATABASE_URL is required - no default is built in
 alembic upgrade head
 python -m app.seed.generate_synthetic_data
 
@@ -188,15 +188,26 @@ same one the frontend already calls), receive the same structured
 evaluate eligibility itself. Full detail in
 [docs/architecture.md](docs/architecture.md#future-ai-integration).
 
+## Deployment
+
+The application is deployment-ready for Vercel (frontend), Render
+(backend), and Neon (PostgreSQL) - configuration only reads from
+environment variables, with no hard-coded local database credentials
+or CORS origins. It has not been deployed. See
+[docs/deployment.md](docs/deployment.md) for the exact settings to
+enter in each platform's dashboard.
+
 ## Current Limitations
 
 See [docs/business-rules.md#limitations](docs/business-rules.md#limitations)
 for the specific rule approximations (exact-only role matching,
 availability as a snapshot rather than a leave calendar, a
 one-hop-deep simulation chain, single-number staffing minimums).
-Beyond the rules themselves: there is no authentication, no
-deployment configuration, and no AI integration in this phase -
-deliberately, per scope.
+Beyond the rules themselves: there is no authentication, no CI/CD
+pipeline, no containerization, and no AI integration in this phase -
+deliberately, per scope. The application is configured to be
+deployable (see [Deployment](#deployment) above) but has not actually
+been deployed anywhere.
 
 ## Roadmap
 
@@ -205,7 +216,7 @@ deliberately, per scope.
 - Multi-hop relief-chain simulation.
 - Role-substitution rules (which roles can cover which gaps).
 - Authentication and role-based access for operations managers vs. read-only viewers.
-- Deployment configuration (containerization, hosted Postgres, CI).
+- Actual deployment (Vercel + Render + Neon are configured but not yet live), plus CI and containerization.
 
 ## Repository Structure
 

@@ -18,6 +18,16 @@ from sqlalchemy.orm import sessionmaker
 BACKEND_DIR = Path(__file__).resolve().parents[2] / "backend"
 sys.path.insert(0, str(BACKEND_DIR))
 
+# app.database builds a SQLAlchemy engine from settings.database_url as
+# soon as it's imported (see backend/app/database.py), and that setting
+# has no default - real environments must set DATABASE_URL explicitly.
+# Tests never use that particular engine (the `db` fixture below builds
+# its own, bound to TEST_DATABASE_URL), so importing app.database only
+# needs *some* syntactically valid connection string, not a reachable
+# one. This placeholder lets `pytest` run with zero local setup without
+# reintroducing a hard-coded default into the application's own config.
+os.environ.setdefault("DATABASE_URL", "postgresql+psycopg2://kinvera:kinvera@localhost:5432/kinvera")
+
 from app.database import Base  # noqa: E402
 
 TEST_DATABASE_URL = os.environ.get(
