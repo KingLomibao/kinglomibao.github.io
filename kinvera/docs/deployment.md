@@ -34,6 +34,11 @@ Create a new **Web Service** in Render, connected to this GitHub repository.
 | Build Command | `pip install -r requirements.txt && alembic upgrade head` |
 | Start Command | `uvicorn app.main:app --host 0.0.0.0 --port $PORT` |
 
+`backend/.python-version` pins the interpreter to `3.11.15` - the exact version Kinvera was
+developed and tested against. Render reads this file automatically; without it, Render selects its
+own default Python version, which can be newer than what this codebase (in particular SQLAlchemy's
+type-hint handling) supports.
+
 Environment variables (Render's dashboard, not committed to git):
 
 | Key | Value |
