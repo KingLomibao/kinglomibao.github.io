@@ -41,6 +41,7 @@ from app.models.enums import (
     EmploymentStatus,
     MovementType,
 )
+from app.seed.extra_employees import EXTRA_RESERVED_FULL_NAMES, seed_extra_demo_employees
 from app.seed.reference_data import (
     QUALIFICATIONS,
     ROLE_HEADCOUNT,
@@ -155,7 +156,7 @@ def generate_random_employees(
     uses to fill staffing requirements per site.
     """
     employees_by_role: dict[str, list[Employee]] = {code: [] for code in roles}
-    used_full_names: set[str] = set(RESERVED_FULL_NAMES)
+    used_full_names: set[str] = set(RESERVED_FULL_NAMES) | set(EXTRA_RESERVED_FULL_NAMES)
 
     for role_code, target_headcount in ROLE_HEADCOUNT.items():
         remaining = target_headcount - already_seeded_by_role.get(role_code, 0)
@@ -411,6 +412,16 @@ def main() -> None:
         create_staffing_requirements(session, sites, roles)
 
         seed_named_scenario(
+            session,
+            roles=roles,
+            sites=sites,
+            qualifications=quals,
+            today=today,
+            employee_number_seq=employee_number_seq,
+        )
+        session.flush()
+
+        seed_extra_demo_employees(
             session,
             roles=roles,
             sites=sites,
