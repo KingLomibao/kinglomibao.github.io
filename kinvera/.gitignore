@@ -1,0 +1,26 @@
+# Python / backend
+backend/.venv/
+backend/venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Environment files (each project's .env.example stays tracked)
+.env
+.env.local
+backend/.env
+frontend/.env.local
+
+# Node / frontend
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# Editors / OS
+.DS_Store
+.vscode/
+.idea/
