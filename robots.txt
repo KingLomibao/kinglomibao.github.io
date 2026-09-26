@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kinglomibao.github.io/sitemap.xml
